@@ -1,6 +1,11 @@
 # Completed Homework Upload
 
-- Re-organised HTML and CSS to be more efficient, cleaner and semantically structured. Included some descriptive comments as well.
+- Re-organised HTML elements to be semantically structured and more efficient.
+- Added alt attributes to images.
+- Re-organised CSS to be more efficient and cleaner. 
+- Consolodated duplicate class selectors. 
+- Included descriptive comments in both HTML and CSS.
+- Uploaded to GUTHUB.
 
 ________________________________________...
 # 01 HTML CSS Git: Code Refactor
