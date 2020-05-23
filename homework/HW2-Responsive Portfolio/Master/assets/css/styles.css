@@ -187,12 +187,21 @@ main {
   color: #6b89aa;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 30px;
-
 } 
 /* END PORTFOLIO PAGE */
 
 
 /* CONTACT FORM PAGE  */
+.contact-header {
+  /* Positioning */
+  margin-bottom: 33px;
+
+  /* Typography */
+  color: #6b89aa;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 30px;
+}
+
 .form-control {
   /* give input boxes right angles */
   border-radius: 5px 20px;
@@ -225,17 +234,32 @@ main {
   background-color: rgb(107, 137, 170, .7);
 }
 
+.SM-image {
+  /* width: 30px; */
+  margin-top: 30px;
+}
+
+.mobile {
+  visibility: hidden;
+}
 /* END CONTACT FORM PAGE */
 
 /* media query */
-@media only screen and (max-width: 800px) {
-  .navbar-header {
-    background-color: #4aaaa5;
-  }
+@media only screen and (max-width: 768px) {
   .block{
     padding: 10px;
   }
   .port-image {
     margin: 5px auto;
+  }
+  .SM-image {
+    width: 0px;
+    margin-top: 0px;
+  }
+  
+  .mobile {
+    visibility: visible;
+    color: white;
+    font-size: 12px;
   }
 }
