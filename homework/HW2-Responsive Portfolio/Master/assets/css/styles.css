@@ -23,7 +23,7 @@ p {
 
 /* Link Styles */
 a {
-  color: rgb(101, 170, 155);
+  color: #6b89aa;
 }
 a:hover {
   color: rgb(161, 197, 245);
@@ -81,23 +81,16 @@ main {
 .nav-link {
   text-align: right;
 }
-
-/* media query for nav background color change */
-@media only screen and (max-width: 767px) {
-  .navbar-header {
-    background-color: #4aaaa5;
-  }
-}
 /* END NAV */
 
 
-/* CONNECT W/ ME CSS */
-.connect-header {
+/* CONTACT CSS */
+.contact-header {
   /* Typography */
   font-size: 25px;
 }
 
-.connect-photo {
+.contact-photo {
   /* Box-model */
   width: 55px;
   height: 55px;
@@ -122,18 +115,19 @@ main {
 
   /* Box-model */
   width: 100%;
-  height: 60px;
+  height: 40px;
 
   /* Visual */
-  background: #c0c0c0;
+  /* background: #c0c0c0; */
 }
 
 .text-muted-footer {
   /* Box-model */
-  margin-top: 15px;
+  margin-top: 10px;
 
   /* Typography */
   color: #fff;
+  font-size: 10px;
 }
 
 .two-toned-footer-color {
@@ -175,6 +169,26 @@ main {
 .port-image {
   margin: 20px auto;
 }
+
+#portF-image {
+  /* Positioning */
+  margin-left: 15px;
+
+  /* Box-model */
+  width: 150px;
+  margin: 0 20px 10px 0;
+}
+
+.port-header {
+  /* Positioning */
+  margin-bottom: 33px;
+
+  /* Typography */
+  color: #6b89aa;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 30px;
+
+} 
 /* END PORTFOLIO PAGE */
 
 
@@ -212,3 +226,16 @@ main {
 }
 
 /* END CONTACT FORM PAGE */
+
+/* media query */
+@media only screen and (max-width: 800px) {
+  .navbar-header {
+    background-color: #4aaaa5;
+  }
+  .block{
+    padding: 10px;
+  }
+  .port-image {
+    margin: 5px auto;
+  }
+}
