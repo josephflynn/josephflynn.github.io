@@ -24,78 +24,141 @@ generateBtn.addEventListener("click", writePassword);
 //   - this number is then used to shorten or not the full password generated from other checkboxes selections
 //   - if password length is too long an alert pops up requiring User to enter number of letters within 1-128 characters
 
-var passwordLength = document.querySelector("#passwordlength")
+var longPassword = [];
 
-function lengthAllocation() [
+var passwordLength = document.querySelector("#passwordlength");
 
-]
+function lengthAllocation() {
+
+}
 
 //  - Lowercase Charactertypes
 //   - checkbox to confirm that the User requests lowercase characters
-//   - selects a variable that randomly chooses a combination of lowercase letters in an Array of up to 128
-//   - Randomiser
-//   - Recurr characters to the length of 128 items in Array
+//   - Array is increased to 128 iterations of the characters available in the array
+//   - Array is then passed into Randomiser Array
 
-//   - this combination is passed into the larger array of characters for the full password
+var lowercaseChar = document.querySelector("#lowercase");
 
-var lowercaseChar = document.querySelector("#lowercase")
+var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var alphaLowerChecked = [];
 
-var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-
-function charLower() {
-
-}
+// Multiply items in the array until the amount reaches the maximum 128 characters, in AlphaLowerLowerChecked
+lowercaseChar.addEventListener('change', function() {
+  if(this.checked) {
+    for(var i = 0; i< alphaLower.length;++i){
+      alphaLowerChecked.push(alphaLower[i]);
+      alphaLowerChecked.push(alphaLower[i]);
+      alphaLowerChecked.push(alphaLower[i]);
+      alphaLowerChecked.push(alphaLower[i]);
+      alphaLowerChecked.push(alphaLower[i]);
+    }
+  } else {
+    alphaLowerChecked = [];
+  }
+  longPassword.push(...alphaLowerChecked);
+});
 
 //  - Uppercase character types
 //   - checkbox to confirm that the User requests uppercase characters
-//   - selects a variable that randomly chooses a combination of uppercase letters in an Array of up to 128
-//   - this combination is passed into the larger array of characters for the full password
+//   - Array is increased to 128 iterations of the characters available in the array
+//   - Array is then passed into Randomiser Array
 
-var uppercaseChar = document.querySelector("#uppercase")
+var uppercaseChar = document.querySelector("#uppercase");
 
 var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var alphaUpperChecked = [];
 
-function charUpper() {
+// Multiply items in the array until the amount reaches the maximum 128 characters, in AlphaUpperChecked
+uppercaseChar.addEventListener('change', function() {
+  if(this.checked) {
+    for(var i = 0; i< alphaUpper.length;++i){
+      alphaUpperChecked.push(alphaUpper[i]);
+      alphaUpperChecked.push(alphaUpper[i]);
+      alphaUpperChecked.push(alphaUpper[i]);
+      alphaUpperChecked.push(alphaUpper[i]);
+      alphaUpperChecked.push(alphaUpper[i]);
+    }
+  } else {
+    alphaUpperChecked = [];
+  }
+  longPassword.push(...alphaUpperChecked);
+});
 
-}
 
 //  - Numeric Characters
 //   - checkbox to confirm that the User requests numeric characters
-//   - selects a variable that randomly chooses a combination of numeric characters in an Array or up to 128
-//   - this combination is passed into the larger array of characters for the full password
+//   - Array is increased to 128 iterations of the characters available in the array
+//   - Array is then passed into Randomiser Array
 
-var numericChar = document.querySelector("#numeric")
+var numericChar = document.querySelector("#numeric");
 
-var alphaNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+var alphaNumber = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var alphaNumberChecked = [];
 
-function charNum() {
-
-}
+numericChar.addEventListener('change', function() {
+  if(this.checked) {
+    for(var i = 0; i< alphaNumber.length;++i){
+      alphaNumberChecked.push(alphaNumber[i]);
+      alphaNumberChecked.push(alphaNumber[i]);
+      alphaNumberChecked.push(alphaNumber[i]);
+      alphaNumberChecked.push(alphaNumber[i]);
+      alphaNumberChecked.push(alphaNumber[i]);
+      alphaNumberChecked.push(alphaNumber[i]);
+      alphaNumberChecked.push(alphaNumber[i]);
+      alphaNumberChecked.push(alphaNumber[i]);
+      alphaNumberChecked.push(alphaNumber[i]);
+      alphaNumberChecked.push(alphaNumber[i]);
+      alphaNumberChecked.push(alphaNumber[i]);
+      alphaNumberChecked.push(alphaNumber[i]);
+      alphaNumberChecked.push(alphaNumber[i]);
+    }
+  } else {
+    alphaNumberChecked = [];
+  }
+  longPassword.push(...alphaNumberChecked);
+});
 
 //  - Special Characters
 //   - checkbox to confirm that the User requests special characters
-//   - selects a variable that randomly chooses a combination of special characters in an Array of up to 128
-//   - this combination is passed into the larger array of characters for the full password
+//   - Array is increased to 128 iterations of the characters available in the array
+//   - Array is then passed into Randomiser Array
 
 
-var specialChar = document.querySelector("#special")
+var specialChar = document.querySelector("#special");
 
-var alphaSpecial = "!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+var alphaSpecial = ["!", "\\", "\"", "#", "$", "%", "&", "\'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"];
+var alphaSpecialChecked = [];
 
-function charSpecial() {
+specialChar.addEventListener('change', function() {
+  if(this.checked) {
+    for(var i = 0; i< alphaSpecial.length;++i){
+      alphaSpecialChecked.push(alphaSpecial[i]);
+      alphaSpecialChecked.push(alphaSpecial[i]);
+      alphaSpecialChecked.push(alphaSpecial[i]);
+      alphaSpecialChecked.push(alphaSpecial[i]);
+    }
+  } else {
+    alphaSpecialChecked = [];
+  }
+  longPassword.push(...alphaSpecialChecked);
+});
 
-}
-
-
-//  - Password generated from checkbox selections and form submitted by User
-//   - The password is made from a variable populated by characters chosen from checkboxes and form
-//   - The password Array is then randomised
-//   - The password Array is then shortened to the length of characters chosen by User
 //   - Password array is then printed out into the <textarea id="password">
 //   - passed in through .innerHtml
 
+//  - Concat Arrays into the longPassword variable
+//   - Randomise the array
+ 
 
+// longPassword = alphaLowerChecked.concat(alphaUpperChecked, alphaNumberChecked, alphaSpecialChecked);
 
+// function concatenateCharacters() {
+//   if (generateBtn.addEventListener("click", writePassword)) {
+//     longPassword= alphaLowerChecked.concat(alphaUpperChecked, alphaNumberChecked, alphaSpecialChecked);
+// console.log(longPassword);
+//   }
+// }
+// concatenateCharacters();
 
 
 //  - Functions are ordered with variables having been populated by event selectors on checkboxes and form
