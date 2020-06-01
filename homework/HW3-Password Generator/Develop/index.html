@@ -26,8 +26,8 @@
       </div>
       <form class="password-length">
         <div class="password-length">
-          <label for="name">Please choose a number from 1 to 128 to set the length of your password.</label>
-          <input type="text" name="name" id="password-length" required>
+          <label for="name">Choose a number from 1 to 128 to set the length of your password.</label>
+          <input type="text" name="name" id="password-length" minlength="1" maxlength="3" required>
         </div>
       </form>
       <container class="checkbox-container">
@@ -48,7 +48,7 @@
           </div>
           <div class="checkbox">
             <input type="checkbox" id="special" class="tickbit" name="special">
-            <label for="special">Special Charcters</label>
+            <label for="special">Special Characters</label>
           </div>
         </div>
       </container>

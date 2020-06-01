@@ -26,16 +26,39 @@ generateBtn.addEventListener("click", writePassword);
 
 var longPassword = [];
 
-var passwordLength = document.querySelector("#passwordlength");
+generateBtn.addEventListener("click", function(){
+  randomise(longPassword);
+  console.log(longPassword);
+});
 
-function lengthAllocation() {
+// Length allocation for password
+var passwordLengthUser = [];
 
+var passwordLength = document.querySelector("#password-length");
+passwordLength.addEventListener('change', updateValue);
+
+function updateValue(event) {
+  
+  passwordLength.addEventListener('change', handleForm);
+  passwordLengthUser = event.target.value;
+  console.log(passwordLengthUser);
+  event.preventDefault();
 }
+
+var form = document.getElementById("myForm");
+function handleForm(event) { event.preventDefault(); } 
+passwordLength.addEventListener('change', handleForm);
+
+// Randomise longPassword Array
+function randomise(array) {
+  array.sort(() => Math.random() - 0.5);
+}
+
 
 //  - Lowercase Charactertypes
 //   - checkbox to confirm that the User requests lowercase characters
 //   - Array is increased to 128 iterations of the characters available in the array
-//   - Array is then passed into Randomiser Array
+//   - Array is then passed into longPassword Array
 
 var lowercaseChar = document.querySelector("#lowercase");
 
@@ -45,7 +68,7 @@ var alphaLowerChecked = [];
 // Multiply items in the array until the amount reaches the maximum 128 characters, in AlphaLowerLowerChecked
 lowercaseChar.addEventListener('change', function() {
   if(this.checked) {
-    for(var i = 0; i< alphaLower.length;++i){
+    for(var i = 0; i< alphaLower.length; ++i){
       alphaLowerChecked.push(alphaLower[i]);
       alphaLowerChecked.push(alphaLower[i]);
       alphaLowerChecked.push(alphaLower[i]);
@@ -61,7 +84,7 @@ lowercaseChar.addEventListener('change', function() {
 //  - Uppercase character types
 //   - checkbox to confirm that the User requests uppercase characters
 //   - Array is increased to 128 iterations of the characters available in the array
-//   - Array is then passed into Randomiser Array
+//   - Array is then passed into longPassword Array
 
 var uppercaseChar = document.querySelector("#uppercase");
 
@@ -71,7 +94,7 @@ var alphaUpperChecked = [];
 // Multiply items in the array until the amount reaches the maximum 128 characters, in AlphaUpperChecked
 uppercaseChar.addEventListener('change', function() {
   if(this.checked) {
-    for(var i = 0; i< alphaUpper.length;++i){
+    for(var i = 0; i< alphaUpper.length; ++i){
       alphaUpperChecked.push(alphaUpper[i]);
       alphaUpperChecked.push(alphaUpper[i]);
       alphaUpperChecked.push(alphaUpper[i]);
@@ -88,7 +111,7 @@ uppercaseChar.addEventListener('change', function() {
 //  - Numeric Characters
 //   - checkbox to confirm that the User requests numeric characters
 //   - Array is increased to 128 iterations of the characters available in the array
-//   - Array is then passed into Randomiser Array
+//   - Array is then passed into longPassword Array
 
 var numericChar = document.querySelector("#numeric");
 
@@ -97,7 +120,7 @@ var alphaNumberChecked = [];
 
 numericChar.addEventListener('change', function() {
   if(this.checked) {
-    for(var i = 0; i< alphaNumber.length;++i){
+    for(var i = 0; i< alphaNumber.length; ++i){
       alphaNumberChecked.push(alphaNumber[i]);
       alphaNumberChecked.push(alphaNumber[i]);
       alphaNumberChecked.push(alphaNumber[i]);
@@ -121,7 +144,7 @@ numericChar.addEventListener('change', function() {
 //  - Special Characters
 //   - checkbox to confirm that the User requests special characters
 //   - Array is increased to 128 iterations of the characters available in the array
-//   - Array is then passed into Randomiser Array
+//   - Array is then passed into longPassword Array
 
 
 var specialChar = document.querySelector("#special");
@@ -131,7 +154,7 @@ var alphaSpecialChecked = [];
 
 specialChar.addEventListener('change', function() {
   if(this.checked) {
-    for(var i = 0; i< alphaSpecial.length;++i){
+    for(var i = 0; i< alphaSpecial.length; ++i){
       alphaSpecialChecked.push(alphaSpecial[i]);
       alphaSpecialChecked.push(alphaSpecial[i]);
       alphaSpecialChecked.push(alphaSpecial[i]);
@@ -143,14 +166,11 @@ specialChar.addEventListener('change', function() {
   longPassword.push(...alphaSpecialChecked);
 });
 
+
+
 //   - Password array is then printed out into the <textarea id="password">
 //   - passed in through .innerHtml
 
-//  - Concat Arrays into the longPassword variable
-//   - Randomise the array
- 
-
-// longPassword = alphaLowerChecked.concat(alphaUpperChecked, alphaNumberChecked, alphaSpecialChecked);
 
 // function concatenateCharacters() {
 //   if (generateBtn.addEventListener("click", writePassword)) {
