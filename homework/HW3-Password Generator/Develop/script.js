@@ -112,10 +112,10 @@ function checksMade() {
 //   - insert into HTML page on screen inside the textarea
 function writePassword() {
   //  - Length of password to be between 8 and 128 characters
-  var passwordLengthUser = Number(prompt("please enter the length of characters you would like in your password from 1 - 128"));
-  //   - if password length is too long an alert pops up requiring User to enter number of letters within 1-128 characters
+  var passwordLengthUser = Number(prompt("please enter the length of characters you would like in your password from 8 - 128"));
+  //   - if password length is too long or short an alert pops up requiring User to enter number of letters within 8-128 characters
   while (isNaN(passwordLengthUser) || passwordLengthUser > 128 || passwordLengthUser < 8) {
-  passwordLengthUser = Number(prompt("Invalid Entry, please enter a number from 1 - 128"));
+  passwordLengthUser = Number(prompt("Invalid Entry, please enter a number from 8 - 128"));
   }
   checksMade();
   function shuffle(arra1) {
@@ -134,6 +134,4 @@ function writePassword() {
   var sliced = finalPassword.slice(0, passwordLengthUser);
   var password = sliced.join("");
   document.getElementById("password").innerHTML = password;
-  
-  
 }
