@@ -1,3 +1,9 @@
+# Homework uploaded and completed.
+
+Sorry about the lateness of this assignment, I really struggled with having an input on a form reloading whenever the keypress change occured.
+I eneded up abandoning that form in place of a prompt for the amount of characters to use, after about 10 hours trying to get it work in any way I could imagine. For some reason using "preventDefault()" did nothing to what I was trying to do.
+
+
 # 03 JavaScript: Password Generator
 
 Create an application that generates a random password based on user-selected criteria. This app will run in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
