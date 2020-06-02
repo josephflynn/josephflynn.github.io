@@ -132,6 +132,8 @@ function writePassword() {
   var finalPassword = longPassword;
   console.log(shuffle(finalPassword));
   var sliced = finalPassword.slice(0, passwordLengthUser);
-  var password = sliced.join("")
+  var password = sliced.join("");
   document.getElementById("password").innerHTML = password;
+  
+  
 }
