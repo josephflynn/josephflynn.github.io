@@ -22,14 +22,8 @@
         <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
       </div>
       <div class="card-footer">
-        <button id="generate" class="btn">Generate Password</button>
+        <button id="generate" class="btn" onclick="writePassword()">Generate Password</button>
       </div>
-      <form class="password-length">
-        <div class="password-length">
-          <label for="name">Choose a number from 1 to 128 to set the length of your password.</label>
-          <input type="text" name="name" id="password-length" minlength="1" maxlength="3" required>
-        </div>
-      </form>
       <container class="checkbox-container">
         <div class="checkboxes">
           <div class="checkbox">

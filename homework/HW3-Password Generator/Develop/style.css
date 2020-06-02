@@ -126,13 +126,6 @@ button[disabled] {
   text-align: center;
 }
 
-#password-length {
-  width: 75px;
-  font-size: 18px;
-  margin: auto;
-  border-radius: 3px;
-}
-
 .checkbox-container {
   display: flex;
   flex-direction: row;
