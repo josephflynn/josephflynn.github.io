@@ -1,3 +1,17 @@
+# Random Password Generator
+
+1. Passwords can be generated from a combination of 4 character types
+⋅⋅* Lowercase letters
+⋅⋅* Uppercase letters
+⋅⋅* Numeric characters
+⋅⋅* Special Characters
+
+2. User can select how many characters they want to include in their password from 8 - 128, but no more or less.
+
+3. clicking on "Gnereate Password" again will generate another combination of characters with the same amount requested by the user.
+
+4. Before clicking "Generate Password" user can unselect character types if they so choose to. 
+
 # Homework uploaded and completed.
 
 Sorry about the lateness of this assignment, I really struggled with having an input on a form reloading whenever the keypress change occured.
