@@ -8,24 +8,15 @@
 2. Quiz
 * Welcome message outlines rules for the quiz with a button to start
 * 10 questions about JavaScript basics
-* 12 seconds per question, so 120 seconds in total (2mins)
+* 6 seconds per question, so 60 seconds in total
 * Timer starts when quiz is started
 * Incorrect answer deducts 5 seconds from timer
 * Questions must be answered correctly before game moves to the next question
-* Correct answer adds a score of 10% to total score
 * Quiz ends when all questions are answered or timer runs out
+* Scores are calculated on time left over
 * Player can enter initals to be submitted to highcores and taken to the highscores page
 * Highscores displayed from quiz
 * Sound effects on buttons, welcome screen, start quiz, quiz over, time out and high scores
-
-# Pseudo Code
-
-1. When the start button is clicked, the quiz begins.
-* Welcome message is hidden with setAttribute "class", "hide"
-* Timer starts
-* Questions are populated from question objects, appended to "questions" div with multiple choice answers displayed as buttons
- - Question objects are set within questions variable
-* 
 
 
 # 04 Web APIs: Code Quiz

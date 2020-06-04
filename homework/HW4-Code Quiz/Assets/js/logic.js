@@ -1,6 +1,6 @@
 // variables to keep track of quiz state
 var currentQuestionIndex = 0;
-var time = questions.length * 12;
+var time = questions.length * 6;
 var timerId;
 
 // variables to reference DOM elements
@@ -15,19 +15,32 @@ var feedbackEl = document.getElementById("feedback");
 // sound effects
 var sfxRight = new Audio("assets/sfx/correct1.mp3");
 var sfxWrong = new Audio("assets/sfx/incorrect.mp3");
-var sfxWelcome = new Audio("assets/sfx/incorrect.mp3");
-var sfxStart = new Audio("assets/sfx/incorrect.mp3");
-var sfxComplete = new Audio("assets/sfx/incorrect.mp3");
-var sfxTimeOut = new Audio("assets/sfx/incorrect.mp3");
-var sfxHighscores = new Audio("assets/sfx/incorrect.mp3");
+var sfxWelcome = new Audio("assets/sfx/welcome.wav");
+var sfxStart = new Audio("assets/sfx/startGame.mp3");
+var sfxComplete = new Audio("assets/sfx/gameOver.wav");
+var sfxTimeOut = new Audio("assets/sfx/gameOver1.wav");
+var sfxSubmit = new Audio("assets/sfx/thankYou.mp3");
+var sfxHighscores = new Audio("assets/sfx/highScores.wav");
+
+// play "welcome" or "highscores" sound effect depending on html page
+window.onload = function() {
+  if (window.location.href.indexOf('highscores.html') > -1) {
+    sfxHighscores.play();
+  } else {
+    sfxWelcome.play();
+  }
+}
 
 function startQuiz() {
-  // hide start screen
+  // hide welcome screen
   var startScreenEl = document.getElementById("start-screen");
   startScreenEl.setAttribute("class", "hide");
 
   // un-hide questions section
   questionsEl.classList.remove("hide");
+
+  // play "start" sound effect
+  sfxStart.play();
 
   // start timer
   timerId = setInterval(clockTick, 1000);
@@ -144,6 +157,8 @@ function clockTick() {
 function saveHighscore() {
   // get value of input box
   var initials = initialsEl.value.trim();
+  // make uppercase
+  initials = initials.toUpperCase();
 
   // make sure value wasn't empty
   if (initials !== "") {
@@ -163,7 +178,14 @@ function saveHighscore() {
 
     // redirect to next page
     window.location.href = "highscores.html";
+  } else { var endScreenEl = document.getElementById("end-screen");
+      var pTag = document.createElement("p");
+      var brTag = document.createElement("br");
+      pTag.textContent = "Please enter your initials to submit score";
+      endScreenEl.appendChild(brTag);
+      endScreenEl.appendChild(pTag);
   }
+  
 }
 
 function checkForEnter(event) {

@@ -9,9 +9,11 @@
     <!-- Reset stylesheet -->
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <!-- Font Style -->
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap">
     <!-- Minimalist Styles -->
     <link rel="stylesheet" href="./assets/css/styles.css" />
+    <!-- Added link to the jQuery library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -19,7 +21,7 @@
     <header>
         <nav>
             <section class="container">
-                <div id="scores" class="navItem"><a href="#quizScores">Highscores</a></div>
+                <div id="scores" class="navItem"><a href="highscores.html">Highscores</a></div>
                 <div class="navItem" id="restart"><a href="index.html">Restart</a></div>
                 <div class="navItem" id="timer">Time: <span id="time">0</span></div>
                 <div class="navItem1" id="sound"></div>
@@ -34,7 +36,7 @@
             <br>
             <p>
                 Answer the following ten code-related questions within the time
-                limit of 120 seconds.
+                limit of 60 seconds.
                 <br>
                 You can record your score at the end of the quiz.
                 <br><br>
@@ -48,27 +50,21 @@
         <!-- Quiz questions -->
         <div id="questions" class="hide quiz">
             <h2 id="question-title"></h2>
-            <br>
+            <br><br>
             <div id="choices" class="choices"></div>
         </div>
         <!-- Quiz complete -->
         <div id="end-screen" class="hide quiz">
-            <h2>Quiz complete!</h2>
+            <h2>Results</h2>
             <br>
             <p>Your final score is <span id="final-score"></span>.</p>
             <br>
-            <p>
-            Enter your initials: <input type="text" id="initials" max="3" />
-            <button id="submit">Submit</button>
-            </p>
+            <p class="inline">Enter your initials:</p> 
+            <input type="text" class="inline" id="initials" max="3" required/>
+            <button class="inline" id="submit">Submit</button>
+            <p>...</p>
         </div>
-        <!-- Highscores -->
-        <div class="quiz hide" id="quizScores">
-            <h1>Highscores</h1>
-            <br>
-            <ol id="highscores"></ol>
-            <button id="clear">Clear Highscores</button>
-        </div>
+        
         <div id="feedback" class="feedback quiz hide"></div>
     </section>
 
@@ -76,6 +72,7 @@
 
     <script src="./assets/js/questions.js"></script>
     <script src="./assets/js/logic.js"></script>
+    <script src="./assets/js/scores.js"></script>
 </body>
 
 </html>

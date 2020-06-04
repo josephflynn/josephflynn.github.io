@@ -8,13 +8,16 @@ function printHighscores() {
   });
 
   highscores.forEach(function(score) {
-    // create li tag for each high score
+    // create h2 tag for each high score
     var liTag = document.createElement("li");
-    liTag.textContent = score.initials + " - " + score.score;
+    var brTag = document.createElement("br");
+    var date = score.dmy;
+    liTag.textContent = score.initials + " ... " + score.score + " ... " + date;
 
     // display on page
     var olEl = document.getElementById("highscores");
     olEl.appendChild(liTag);
+    olEl.appendChild(brTag);
   });
 }
 
