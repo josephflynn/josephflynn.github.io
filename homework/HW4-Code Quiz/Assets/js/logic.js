@@ -2,6 +2,7 @@
 var currentQuestionIndex = 0;
 var time = questions.length * 6;
 var timerId;
+var date;
 
 // variables to reference DOM elements
 var questionsEl = document.getElementById("questions");
@@ -13,14 +14,14 @@ var initialsEl = document.getElementById("initials");
 var feedbackEl = document.getElementById("feedback");
 
 // sound effects
-var sfxRight = new Audio("assets/sfx/correct1.mp3");
-var sfxWrong = new Audio("assets/sfx/incorrect.mp3");
-var sfxWelcome = new Audio("assets/sfx/welcome.wav");
-var sfxStart = new Audio("assets/sfx/startGame.mp3");
-var sfxComplete = new Audio("assets/sfx/gameOver.wav");
-var sfxTimeOut = new Audio("assets/sfx/gameOver1.wav");
-var sfxSubmit = new Audio("assets/sfx/thankYou.mp3");
-var sfxHighscores = new Audio("assets/sfx/highScores.wav");
+var sfxRight = new Audio("assets/sfx/correct01.m4a");
+var sfxWrong = new Audio("assets/sfx/incorrect1.m4a");
+var sfxWelcome = new Audio("assets/sfx/welcome01.m4a");
+var sfxStart = new Audio("assets/sfx/startGame1.m4a");
+var sfxComplete = new Audio("assets/sfx/gameOver0.m4a");
+var sfxTimeOut = new Audio("assets/sfx/gameOver01.m4a");
+var sfxSubmit = new Audio("assets/sfx/thankYou1.m4a");
+var sfxHighscores = new Audio("assets/sfx/highScores1.m4a");
 
 // play "welcome" or "highscores" sound effect depending on html page
 window.onload = function() {
@@ -172,20 +173,25 @@ function saveHighscore() {
       initials: initials
     };
 
+    date = new Date();
+
     // save to localstorage
     highscores.push(newScore);
     window.localStorage.setItem("highscores", JSON.stringify(highscores));
 
     // redirect to next page
     window.location.href = "highscores.html";
-  } else { var endScreenEl = document.getElementById("end-screen");
-      var pTag = document.createElement("p");
-      var brTag = document.createElement("br");
-      pTag.textContent = "Please enter your initials to submit score";
-      endScreenEl.appendChild(brTag);
-      endScreenEl.appendChild(pTag);
+  } else { 
+    // play "submit" sound effect
+    sfxSubmit.play();
+    // Append message to user to enter their initials
+    var endScreenEl = document.getElementById("end-screen");
+    var pTag = document.createElement("p");
+    var brTag = document.createElement("br");
+    pTag.textContent = "Please enter your initials to submit score";
+    endScreenEl.appendChild(brTag);
+    endScreenEl.appendChild(pTag);
   }
-  
 }
 
 function checkForEnter(event) {
