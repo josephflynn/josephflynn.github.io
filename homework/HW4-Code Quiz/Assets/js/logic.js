@@ -160,6 +160,8 @@ function saveHighscore() {
   var initials = initialsEl.value.trim();
   // make uppercase
   initials = initials.toUpperCase();
+  // Give score a date reference
+  var date = new Date();
 
   // make sure value wasn't empty
   if (initials !== "") {
@@ -170,10 +172,9 @@ function saveHighscore() {
     // format new score object for current user
     var newScore = {
       score: time,
-      initials: initials
+      initials: initials,
+      date: date
     };
-
-    date = new Date();
 
     // save to localstorage
     highscores.push(newScore);
