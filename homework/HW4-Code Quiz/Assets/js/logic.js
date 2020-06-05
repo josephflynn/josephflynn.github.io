@@ -12,16 +12,55 @@ var submitBtn = document.getElementById("submit");
 var startBtn = document.getElementById("start");
 var initialsEl = document.getElementById("initials");
 var feedbackEl = document.getElementById("feedback");
+var soundOn = document.getElementById("sound on");
+var muted = document.getElementById("muted");
 
-// sound effects
-var sfxRight = new Audio("assets/sfx/correct01.m4a");
-var sfxWrong = new Audio("assets/sfx/incorrect1.m4a");
-var sfxWelcome = new Audio("assets/sfx/welcome01.m4a");
-var sfxStart = new Audio("assets/sfx/startGame1.m4a");
-var sfxComplete = new Audio("assets/sfx/gameOver0.m4a");
-var sfxTimeOut = new Audio("assets/sfx/gameOver01.m4a");
-var sfxSubmit = new Audio("assets/sfx/thankYou1.m4a");
-var sfxHighscores = new Audio("assets/sfx/highScores1.m4a");
+// sound effects variables to reference files
+var sfxRight;
+var sfxWrong;
+var sfxWelcome;
+var sfxStart;
+var sfxComplete;
+var sfxTimeOut;
+var sfxSubmit;
+var sfxHighscores;
+
+// Access to audio files depend on which image is set to mute or sound on
+function soundControl(){
+  if (typeof(muted) != "undefined" && muted != null) {
+    sfxRight = new Audio("");
+    sfxWrong = new Audio("");
+    sfxWelcome = new Audio("");
+    sfxStart = new Audio("");
+    sfxComplete = new Audio("");
+    sfxTimeOut = new Audio("");
+    sfxSubmit = new Audio("");
+    sfxHighscores = new Audio("");
+  } else {
+    sfxRight = new Audio("assets/sfx/correct01.m4a");
+    sfxWrong = new Audio("assets/sfx/incorrect1.m4a");
+    sfxWelcome = new Audio("assets/sfx/welcome01.m4a");
+    sfxStart = new Audio("assets/sfx/startGame1.m4a");
+    sfxComplete = new Audio("assets/sfx/gameOver0.m4a");
+    sfxTimeOut = new Audio("assets/sfx/gameOver01.m4a");
+    sfxSubmit = new Audio("assets/sfx/thankYou1.m4a");
+    sfxHighscores = new Audio("assets/sfx/highScores1.m4a");
+  }
+}
+soundControl();
+
+// After clicking sound on image, replaced by muted image
+$(soundOn).click(muter);
+function muter() {
+    $("#sound on").remove();
+    $("#sound").html("<img src=\"assets/imgs/muted.png\" alt=\"muted\" id=\"muted\">");
+  } 
+
+$(muted).click(sounds);
+function sounds() {
+  $("#muted").remove();
+    $("#sound").html("<img src=\"assets/imgs/sound.png\" alt=\"sound on\" id=\"sound on\">");
+  } 
 
 // play "welcome" or "highscores" sound effect depending on html page
 window.onload = function() {

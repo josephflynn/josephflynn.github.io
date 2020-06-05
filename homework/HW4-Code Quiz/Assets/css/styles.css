@@ -54,6 +54,10 @@ img {
   padding-right: 3%;
 }
 
+img:hover {
+  cursor: pointer;
+}
+
 /* Main section styles */
 .main {
   border-left: 2px solid black;
