@@ -53,11 +53,17 @@ function quizSounds(audio) {
 
 // Check audioChoice from local storage, if available then update to refreshed page
 function speakerCondition() {
-if (localStorage.getItem("speaker") === null) {
+  if (localStorage.getItem("speakerMute") === null) {
   // leave it be
-} else {
-  speakerMuter();
-}
+  } else {
+    // update the soundCheckbbox with audioChoice attributes
+    
+  // var audioChoice = speaker.setAttribute("src", "assets/imgs/sound.png");
+  //     soundCheckbox.checked = false;
+
+  //     // save to localstorage
+  //     window.localStorage.setItem("speakerMute", JSON.stringify(audioChoice));
+  }
 }
 
 // Update speakerMuter after speaker checked
@@ -67,20 +73,14 @@ function speakerMuter() {
       var audioChoice = speaker.setAttribute("src", "assets/imgs/sound.png");
       soundCheckbox.checked = false;
 
-      // // get saved scores from localstorage, or if not any, set to empty array
-      // var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
-
       // save to localstorage
-      // audioChoice.push(speaker);
-      window.localStorage.setItem("speaker", JSON.stringify(audioChoice));
+      window.localStorage.setItem("speakerMute", JSON.stringify(audioChoice));
   } else {
       // sound on
       speaker.setAttribute("src", "assets/imgs/muted.png");
       soundCheckbox.checked = true;
 
       // // save to localstorage
-      // audioChoice.push(speaker);
-      // window.localStorage.setItem("speaker", JSON.stringify(speaker));
       window.localStorage.setItem("speaker", JSON.stringify(audioChoice));
   }
 }
