@@ -12,62 +12,73 @@ var submitBtn = document.getElementById("submit");
 var startBtn = document.getElementById("start");
 var initialsEl = document.getElementById("initials");
 var feedbackEl = document.getElementById("feedback");
-var soundOn = document.getElementById("sound on");
+var speaker = document.getElementById("speaker");
 var muted = document.getElementById("muted");
 
 // sound effects variables to reference files
-var sfxRight;
-var sfxWrong;
-var sfxWelcome;
-var sfxStart;
-var sfxComplete;
-var sfxTimeOut;
-var sfxSubmit;
-var sfxHighscores;
+sfxRight = new Audio("assets/sfx/correct01.m4a");
+sfxWrong = new Audio("assets/sfx/incorrect1.m4a");
+sfxWelcome = new Audio("assets/sfx/welcome01.m4a");
+sfxStart = new Audio("assets/sfx/startGame1.m4a");
+sfxComplete = new Audio("assets/sfx/gameOver0.m4a");
+sfxTimeOut = new Audio("assets/sfx/gameOver01.m4a");
+sfxSubmit = new Audio("assets/sfx/thankYou1.m4a");
+sfxHighscores = new Audio("assets/sfx/highScores1.m4a");
 
-// Access to audio files depend on which image is set to mute or sound on
-function soundControl(){
-  if (typeof(muted) != "undefined" && muted != null) {
-    sfxRight = new Audio("");
-    sfxWrong = new Audio("");
-    sfxWelcome = new Audio("");
-    sfxStart = new Audio("");
-    sfxComplete = new Audio("");
-    sfxTimeOut = new Audio("");
-    sfxSubmit = new Audio("");
-    sfxHighscores = new Audio("");
+// Access to audio files depend on speaker image checkbox status
+function quizSounds(audio) {
+  if (document.getElementById("sound").checked) {
+    return;
   } else {
-    sfxRight = new Audio("assets/sfx/correct01.m4a");
-    sfxWrong = new Audio("assets/sfx/incorrect1.m4a");
-    sfxWelcome = new Audio("assets/sfx/welcome01.m4a");
-    sfxStart = new Audio("assets/sfx/startGame1.m4a");
-    sfxComplete = new Audio("assets/sfx/gameOver0.m4a");
-    sfxTimeOut = new Audio("assets/sfx/gameOver01.m4a");
-    sfxSubmit = new Audio("assets/sfx/thankYou1.m4a");
-    sfxHighscores = new Audio("assets/sfx/highScores1.m4a");
+    if (audio == "correct") {
+      sfxRight.play();
+    } else if (audio == "incorrect") {
+      sfxWrong.play();
+    } else if (audio == "welcome") {
+      sfxWelcome.play();
+    } else if (audio == "start") {
+      sfxStart.play();
+    } else if (audio == "complete") {
+      sfxComplete.play();
+    } else if (audio == "timout") {
+      sfxTimeOut.play();
+    } else if (audio == "submit") {
+      sfxSubmit.play();
+    } else if (audio == "highscores") {
+      sfxHighscores.play();
+    }
   }
 }
-soundControl();
 
 // After clicking sound on image, replaced by muted image
-$(soundOn).click(muter);
-function muter() {
-    $("#sound on").remove();
-    $("#sound").html("<img src=\"assets/imgs/muted.png\" alt=\"muted\" id=\"muted\">");
-  } 
+function speakerMuter() {
+  if (document.getElementById("sound").checked) {
+      // sound off
+      var audioChoice = speaker.setAttribute("src", "assets/imgs/sound.png");
+      document.getElementById("sound").checked = false;
 
-$(muted).click(sounds);
-function sounds() {
-  $("#muted").remove();
-    $("#sound").html("<img src=\"assets/imgs/sound.png\" alt=\"sound on\" id=\"sound on\">");
-  } 
+      // save to localstorage
+      audioChoice.push(speaker);
+      window.localStorage.setItem("speaker", JSON.stringify(speaker));
+  } else {
+      // sound on
+      speaker.setAttribute("src", "assets/imgs/muted.png");
+      document.getElementById("sound").checked = true;
+
+      // // save to localstorage
+      // audioChoice.push(speaker);
+      // window.localStorage.setItem("speaker", JSON.stringify(speaker));
+  }
+}
+
+speaker.addEventListener("click", speakerMuter, false);
 
 // play "welcome" or "highscores" sound effect depending on html page
 window.onload = function() {
   if (window.location.href.indexOf('highscores.html') > -1) {
-    sfxHighscores.play();
+    quizSounds("highscores");
   } else {
-    sfxWelcome.play();
+    quizSounds("welcome");
   }
 }
 
@@ -80,7 +91,8 @@ function startQuiz() {
   questionsEl.classList.remove("hide");
 
   // play "start" sound effect
-  sfxStart.play();
+  quizSounds("start");
+  // sfxStart.play();
 
   // start timer
   timerId = setInterval(clockTick, 1000);
@@ -133,13 +145,15 @@ function questionClick() {
     // display new time on page
     timerEl.textContent = time;
 
-    // play "wrong" sound effect
-    sfxWrong.play();
+    // play "incorrect" sound effect
+    quizSounds("incorrect");
+    // sfxWrong.play();
 
     feedbackEl.textContent = "Incorrect!";
   } else {
-    // play "right" sound effect
-    sfxRight.play();
+    // play "correct" sound effect
+    quizSounds("correct");
+    // sfxRight.play();
 
     feedbackEl.textContent = "Correct!";
     
@@ -159,6 +173,7 @@ function questionClick() {
   if (currentQuestionIndex === questions.length) {
     quizEnd();
     // play "complete" sound effect
+    quizSounds("complete");
     sfxComplete.play();
   } else {
     getQuestion();
@@ -189,8 +204,9 @@ function clockTick() {
   // check if user ran out of time
   if (time <= 0) {
     quizEnd();
-    // play "time out" sound effect
-    sfxTimeOut.play();
+    // play "timeout" sound effect
+    quizSounds("timout");
+    // sfxTimeOut.play();
   }
 }
 
@@ -200,13 +216,15 @@ function saveHighscore() {
   // make uppercase
   initials = initials.toUpperCase();
   // Give score a date reference
-  var date = new Date();
+  // var date = new Date();
 
   // make sure value wasn't empty
   if (initials !== "") {
     // get saved scores from localstorage, or if not any, set to empty array
     var highscores =
       JSON.parse(window.localStorage.getItem("highscores")) || [];
+
+    var date = new Date();
 
     // format new score object for current user
     var newScore = {
@@ -223,7 +241,8 @@ function saveHighscore() {
     window.location.href = "highscores.html";
   } else { 
     // play "submit" sound effect
-    sfxSubmit.play();
+    quizSounds("submit");
+    // sfxSubmit.play();
     // Append message to user to enter their initials
     var endScreenEl = document.getElementById("end-screen");
     var pTag = document.createElement("p");

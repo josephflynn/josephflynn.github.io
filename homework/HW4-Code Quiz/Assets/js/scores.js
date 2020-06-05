@@ -11,7 +11,7 @@ function printHighscores() {
     // create h2 tag for each high score
     var liTag = document.createElement("li");
     var brTag = document.createElement("br");
-    liTag.textContent = score.initials + " ... " + score.score + " ... " + date.date;
+    liTag.textContent = score.initials + " ... " + score.score + " ... " + score.date;
 
     // display on page
     var olEl = document.getElementById("highscores");
