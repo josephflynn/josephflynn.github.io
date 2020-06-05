@@ -14,6 +14,7 @@ var initialsEl = document.getElementById("initials");
 var feedbackEl = document.getElementById("feedback");
 var speaker = document.getElementById("speaker");
 var muted = document.getElementById("muted");
+var soundCheckbox = document.getElementById("sound")
 
 // sound effects variables to reference files
 sfxRight = new Audio("assets/sfx/correct01.m4a");
@@ -27,7 +28,7 @@ sfxHighscores = new Audio("assets/sfx/highScores1.m4a");
 
 // Access to audio files depend on speaker image checkbox status
 function quizSounds(audio) {
-  if (document.getElementById("sound").checked) {
+  if (soundCheckbox.checked) {
     return;
   } else {
     if (audio == "correct") {
@@ -50,24 +51,37 @@ function quizSounds(audio) {
   }
 }
 
-// After clicking sound on image, replaced by muted image
+// Check audioChoice from local storage, if available then update to refreshed page
+function speakerCondition() {
+if (localStorage.getItem("speaker") === null) {
+  // leave it be
+} else {
+  speakerMuter();
+}
+}
+
+// Update speakerMuter after speaker checked
 function speakerMuter() {
-  if (document.getElementById("sound").checked) {
+  if (soundCheckbox.checked) {
       // sound off
       var audioChoice = speaker.setAttribute("src", "assets/imgs/sound.png");
-      document.getElementById("sound").checked = false;
+      soundCheckbox.checked = false;
+
+      // // get saved scores from localstorage, or if not any, set to empty array
+      // var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
 
       // save to localstorage
-      audioChoice.push(speaker);
-      window.localStorage.setItem("speaker", JSON.stringify(speaker));
+      // audioChoice.push(speaker);
+      window.localStorage.setItem("speaker", JSON.stringify(audioChoice));
   } else {
       // sound on
       speaker.setAttribute("src", "assets/imgs/muted.png");
-      document.getElementById("sound").checked = true;
+      soundCheckbox.checked = true;
 
       // // save to localstorage
       // audioChoice.push(speaker);
       // window.localStorage.setItem("speaker", JSON.stringify(speaker));
+      window.localStorage.setItem("speaker", JSON.stringify(audioChoice));
   }
 }
 
@@ -215,15 +229,13 @@ function saveHighscore() {
   var initials = initialsEl.value.trim();
   // make uppercase
   initials = initials.toUpperCase();
-  // Give score a date reference
-  // var date = new Date();
 
   // make sure value wasn't empty
   if (initials !== "") {
-    // get saved scores from localstorage, or if not any, set to empty array
-    var highscores =
-      JSON.parse(window.localStorage.getItem("highscores")) || [];
 
+    // get saved scores from localstorage, or if not any, set to empty array
+    var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+    // Give score a date reference
     var date = new Date();
 
     // format new score object for current user
