@@ -6,7 +6,7 @@
 * 
 * Minimalist aesthetics for quiz styling
 
-2. Quiz
+2. Quiz logic
 * Welcome message outlines rules for the quiz with a button to start
 * 10 questions about JavaScript basics
 * 6 seconds per question, so 60 seconds in total
@@ -16,8 +16,8 @@
 * Quiz ends when all questions are answered or timer runs out
 * Scores are calculated on numerical seconds/time left over.
 * Player can enter initals to be submitted to highcores and taken to the highscores page
-* Highscores displayed from quiz in descending order from high to low in highscores.html
-* Sound effects on buttons, welcome screen, start quiz, quiz over, time out and high scores are super good.
+* Highscores displayed from quiz in descending order from high to low based on time-scoring in highscores.html
+* Sound effects on buttons, welcome screen, start quiz, quiz over, time out and high scores are super smooth and provide optimal sensory feedback to user.
 
 
 # 04 Web APIs: Code Quiz

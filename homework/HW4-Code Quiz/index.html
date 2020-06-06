@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Coding Quiz</title>
     <!-- Reset stylesheet -->
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="./css/reset.css" />
     <!-- Minimalist Styles -->
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
     <!-- Font Style -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap">
+    <link rel="stylesheet" type="text/css" href="./https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap">
     <!-- Added link to the jQuery library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -21,11 +21,11 @@
     <header>
         <nav>
             <section class="container">
-                <div id="scores" class="navItem"><a href="highscores.html">Highscores</a></div>
-                <div class="navItem" id="restart"><a href="index.html">Restart</a></div>
+                <div id="scores" class="navItem"><a href="./highscores.html">Highscores</a></div>
+                <div class="navItem" id="restart"><a href="./index.html">Restart</a></div>
                 <div class="navItem" id="timer">Time: <span id="time">0</span></div>
                 <div class="navItem1" id="soundnav">
-                    <img src="assets/imgs/sound.png" alt="sound" id="speaker">
+                    <img src="./imgs/sound.png" alt="sound" id="speaker">
                     <input type="checkbox" id="sound" style="visibility:hidden"/>
                   </div>
             </section>
@@ -35,14 +35,14 @@
     <section class="main">
         <!-- Quiz welcome screen -->
         <div id="start-screen" class="quiz">
-            <h1>Coding Quiz</h1>
+            <h1>JavaScript Coding Quiz</h1>
             <br>
             <p>
                 Answer the following ten code-related questions within the time
                 limit of 60 seconds.
                 <br>
                 Scoring is based on time remaining after the quiz is completed.
-                <br><br>
+                <br>
                 You can record your score at the end of the quiz.
                 <br><br>
                 Incorrect answers will penalize your time by five seconds!
@@ -65,7 +65,7 @@
             <p>Your final time-score is <span id="final-score"></span>.</p>
             <br>
             <p class="inline">Enter your initials:</p> 
-            <input type="text" class="inline" id="initials" max="3" required/>
+            <input type="text" class="inline" id="initials" min="1" max="3" required/>
             <button class="inline" id="submit">Submit</button>
             <p>...</p>
         </div>
@@ -75,9 +75,9 @@
 
 
 
-    <script src="assets/js/questions.js"></script>
-    <script src="assets/js/logic.js"></script>
-    <script src="assets/js/scores.js"></script>
+    <script src="./js/questions.js"></script>
+    <script src="./js/logic.js"></script>
+    <script src="./js/scores.js"></script>
 </body>
 
 </html>

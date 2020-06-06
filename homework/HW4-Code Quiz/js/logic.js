@@ -18,14 +18,14 @@ var soundCheckbox = document.getElementById("sound")
 var speakerMemory = localStorage.getItem("speakerMute")
 
 // sound effects variables to reference files
-sfxRight = new Audio("assets/sfx/correct01.m4a");
-sfxWrong = new Audio("assets/sfx/incorrect1.m4a");
-sfxWelcome = new Audio("assets/sfx/welcome01.m4a");
-sfxStart = new Audio("assets/sfx/startGame1.m4a");
-sfxComplete = new Audio("assets/sfx/gameOver0.m4a");
-sfxTimeOut = new Audio("assets/sfx/gameOver01.m4a");
-sfxSubmit = new Audio("assets/sfx/thankYou1.m4a");
-sfxHighscores = new Audio("assets/sfx/highScores1.m4a");
+sfxRight = new Audio("sfx/correct01.m4a");
+sfxWrong = new Audio("sfx/incorrect1.m4a");
+sfxWelcome = new Audio("sfx/welcome01.m4a");
+sfxStart = new Audio("sfx/startGame1.m4a");
+sfxComplete = new Audio("sfx/gameOver0.m4a");
+sfxTimeOut = new Audio("sfx/gameOver01.m4a");
+sfxSubmit = new Audio("sfx/thankYou1.m4a");
+sfxHighscores = new Audio("sfx/highScores1.m4a");
 
 // Access to audio files depend on speaker image checkbox status
 function quizSounds(audio) {
@@ -75,41 +75,12 @@ speaker.addEventListener("click", speakerMuter, false);
 
 // play "welcome" or "highscores" sound effect depending on html page
 window.onload = function() {
-  if (soundCheckbox.checked) {
-    // don't play welcome sounds
-  } else {
   if (window.location.href.indexOf('highscores.html') > -1) {
     quizSounds("highscores");
   } else {
     quizSounds("welcome");
   }
 }
-}
-
-// // Check audioChoice from local storage, if available then update to refreshed page
-// function speakerCondition() {console.log(speaker);
-//   if (speaker === null) { 
-//     // var audioChoice = speaker.setAttribute("src", "assets/imgs/sound.png");
-//     // soundCheckbox.checked = false;
-
-//     // // save to localstorage
-//     // window.localStorage.setItem("speakerMute", (audioChoice));
-//     // console.log(speaker);
-//   } else {
-//     // update the soundCheckbbox with audioChoice attribute stored in speakerMute
-
-//     // speaker.setAttribute("src", "assets/imgs/muted.png");
-//     // soundCheckbox.checked = true;
-
-//   // var audioChoice = speaker.setAttribute("src", "assets/imgs/sound.png");
-//   //     soundCheckbox.checked = false;
-
-//   //     // save to localstorage
-//        speakerMemory = window.localStorage.getItem("speakerMute", (audioChoice));
-//        conssole.log(speakerMemory);
-//   }
-// }
-// speakerCondition();
 
 function startQuiz() {
   // hide welcome screen
@@ -151,7 +122,7 @@ function getQuestion() {
     choiceNode.setAttribute("value", choice);
     choiceNode.classList.add("choicesSpace");
 
-    choiceNode.textContent = i + 1 + ". " + choice;
+    choiceNode.textContent = choice;
 
     // attach click event listener to each choice
     choiceNode.onclick = questionClick;
