@@ -63,7 +63,7 @@ function speakerMuter() {
       window.localStorage.setItem("speakerMute", (audioChoice));
   } else {
       // sound on
-      speaker.setAttribute("src", "assets/imgs/muted.png");
+      speaker.setAttribute("src", "./imgs/muted.png");
       soundCheckbox.checked = true;
 
       // // save to localstorage
