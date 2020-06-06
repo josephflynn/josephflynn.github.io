@@ -56,7 +56,7 @@ function quizSounds(audio) {
 function speakerMuter() {
   if (soundCheckbox.checked) {
       // sound off
-      var audioChoice = speaker.setAttribute("src", "assets/imgs/sound.png");
+      var audioChoice = speaker.setAttribute("src", "./imgs/sound.png");
       soundCheckbox.checked = false;
 
       // save to localstorage
