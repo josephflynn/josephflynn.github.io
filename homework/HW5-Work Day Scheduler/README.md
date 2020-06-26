@@ -9,10 +9,10 @@
 * The hours text area is colour coordinated to represent the past, present and future time by the hour.
 * When the user clicks the clear all button, the text is cleared from the input fields and also the local storage.
 
-
+https://josephflynn.github.io/homework/HW5-Work%20Day%20Scheduler/index.html
 
 <dl>
-    <a href=""><img src="" /></a>
+    <a href="https://josephflynn.github.io/homework/HW5-Work%20Day%20Scheduler/index.html"><img src="screenshot.png" /></a>
 </dl>
 
 # 05 Third-Party APIs: Work Day Scheduler
